@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr">
+<head>
+	<meta charset="utf-8">
+	<title>Video</title>
+</head>
+
+<body>
+	<div class = 'bartkavideo'>
+		<video controls id='k1videoplayer'>
+			<source id='k1videos' type='video/mp4' src='/images/video/blog/000014Weddings/01Trailer.mp4'/>
+		</video>
+	</div>
+	<div class = "bartkaplaylist">
+		<div class = 'bartkaplayerone'>
+			<video poster="/images/video/blog/000014Weddings/210619MariaAndMatthew/01Trailer.jpg" id='lengthvideoplayer0' onloadedmetadata='myFunction0()'>
+      				<source id='k1lengthvideo0' type='video/mp4' src='/images/video/blog/000014Weddings/210619MariaAndMatthew/01Trailer.mp4'/>
+      			</video>
+			<a href='#' id='01Trailer'>
+        			<img src='/images/icons/mediaplayer/playbutton.png' alt='01Trailer'> Trailer
+			</a>
+			<p id='k1video0'></p>
+		</div>
+		<div class = 'bartkaplayerone'>
+			<video poster="/images/video/blog/000014Weddings/210619MariaAndMatthew/03Slub.jpg" id='lengthvideoplayer1' onloadedmetadata='myFunction1()'>
+      				<source id='k1lengthvideo1' type='video/mp4' src='/images/video/blog/000014Weddings/210619MariaAndMatthew/03Slub.mp4'/>
+      			</video>
+			<a href='#' id='03Slub'>
+        			<img src='/images/icons/mediaplayer/playbutton.png' alt='03Slub'> Slub
+			</a>
+			<p id='k1video1'></p>
+		</div>
+	</div>
+<script>
+	var i = 0;
+	var videosAutoPlay = new Array();
+	videosAutoPlay[0]='/images/video/blog/000014Weddings/210619MariaAndMatthew/01Trailer.mp4';
+	videosAutoPlay[1]='/images/video/blog/000014Weddings/210619MariaAndMatthew/02Ceremony.mp4';
+	videosAutoPlay[2]='/images/video/blog/000014Weddings/210619MariaAndMatthew/03CocktailHour.mp4';
+	var videoCount = videosAutoPlay.length;
+	document.getElementById("k1videoplayer").setAttribute("src",videosAutoPlay[0]);
+  	document.getElementById('k1videoplayer').addEventListener('ended',myHandler,false);
+
+	function videoPlay(videoNum) {
+		document.getElementById("k1videoplayer").setAttribute("src",videosAutoPlay[videoNum]);
+		document.getElementById("k1videoplayer").load();
+		document.getElementById("k1videoplayer").play();
+	}
+	videoPlay(0);
+  
+	function myHandler() {
+		i++;
+		if(i == videoCount){ i = 0; videoPlay(i);} 
+		else { videoPlay(i); }
+	} 
+
+	var videobutton0 = document.getElementById('01Trailer');
+	var videobutton1 = document.getElementById('02Ceremony');
+	var videobutton2 = document.getElementById('03CocktailHour');
+	videobutton0.addEventListener('click', function(event) { i = 0; videoPlay(i); }, false);
+	videobutton1.addEventListener('click', function(event) { i = 1; videoPlay(i); }, false);
+	videobutton2.addEventListener('click', function(event) { i = 2; videoPlay(i); }, false);
+
+	function myFunction0() {
+	  var videolength0 = document.getElementById('lengthvideoplayer0').duration;
+      var minutes0 = Math.floor(videolength0/60);
+      var seconds0 = Math.floor(((videolength0/60)-minutes0)*60);
+      if (seconds0 < 10) {seconds0 = '0'+seconds0;}
+    document.getElementById('k1video0').innerHTML = 'Length: '+minutes0+':'+seconds0 };
+	function myFunction1() {
+	  var videolength1 = document.getElementById('lengthvideoplayer1').duration;
+      var minutes1 = Math.floor(videolength1/60);
+      var seconds1 = Math.floor(((videolength1/60)-minutes1)*60);
+      if (seconds1 < 10) {seconds1 = '0'+seconds1;}
+    document.getElementById('k1video1').innerHTML = 'Length: '+minutes1+':'+seconds1 };
+</script>
+	
+</body>
+</html>
